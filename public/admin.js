@@ -9,12 +9,32 @@ async function main() {
     books.forEach(renderBook)
 }
 
-function render(book){
+function render(book) {
     let root = document.querySelector('#root')
 
     let li = document.querySelector('#root')
 
     let quantityInput = document.createElement('imput')
+    quantityInput.value = book.quantityInput
 
+    let saveButton = document.createElement('button')
+    saveButton.textContent = 'Save'
+
+    saveButton.addEventListener('click', () => {
+        fetch('http:localhost:3001/updateBook', {
+            method: 'PATCH',
+            headers: {
+                'content-Type': 'applicatin/json'
+            }, body: JSON.stringify({
+                id: book.id,
+                quantity: quantityInput.value
+            })
+        })
+    })
+
+    li.append(quantityInput, saveButton)
+
+    root.append(li)
 }
 
+main();
