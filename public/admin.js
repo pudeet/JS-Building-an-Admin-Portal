@@ -8,3 +8,13 @@ async function main() {
 
     books.forEach(renderBook)
 }
+
+function render(book){
+    let root = document.querySelector('#root')
+
+    let li = document.querySelector('#root')
+
+    let quantityInput = document.createElement('imput')
+
+}
+
